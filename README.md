@@ -45,7 +45,7 @@ The active app requires `client/.env` with:
 VITE_API_URL=https://act-3-5.onrender.com
 ```
 
-This file is excluded from Git. `client/.env.example` provides the same template. Restart the dev server after changing it. The code adds `/api/products` automatically.
+The app uses your existing `client/.env`; the backend uses `server/.env`. Both files are excluded from Git. Restart the dev server after changing environment values. The frontend code adds `/api/products` automatically. When deploying, configure the same values in Vercel and Render's environment settings.
 
 ## Deploy the frontend on Vercel
 
