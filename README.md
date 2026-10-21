@@ -1,6 +1,6 @@
 # ShowCase Product Gallery
 
-Code copied from the activity PDF. The default app is Activity 1 (local React state). No database or account is required for this version. Products disappear when you refresh, as described in the PDF.
+Code copied from the activity PDF. The active frontend now uses the database app and connects to the Render API. Six sample products with embedded PNG images have been saved to MongoDB and persist after refresh.
 
 ## Run the website
 
@@ -24,7 +24,9 @@ Use `npm.cmd` in PowerShell to avoid problems with the `npm.ps1` execution polic
 
 ## Where the code is
 
-- `client/src/App.jsx`: Activity 1 app, ready for local use.
+- `client/src/App.jsx`: active database-connected app.
+- `client/src/App.local.jsx`: original local app; refresh clears products in this version.
+- `client/public/product-images/`: sample PNG images for upload, plus SVG sources.
 - `client/src/components/`: Navbar, ProductCard, ProductGrid, ImageUpload, ProductForm.
 - `client/src/pages/`: GalleryPage and ManagePage.
 - `client/src/App.database.jsx`: Activity 3 replacement app that connects to the API.
@@ -32,38 +34,29 @@ Use `npm.cmd` in PowerShell to avoid problems with the `npm.ps1` execution polic
 - `server/`: Express API, database connection, model, controller, and routes.
 - `Activity-3-5-codes-and-instructions.md`: all 42 PDF steps, code, rubrics, and submission requirements.
 
-Replace `[Your Name]` in GalleryPage.jsx and App.jsx, and `[Section]` in App.jsx with your own details.
+The name is Juan Dela Cruz, matching the PDF example. The PDF supplies no section, so `[Section]` remains a footer placeholder.
 
-## Later: run with MongoDB
+## Frontend environment
 
-Follow the MongoDB setup steps in the transcribed instructions first. Then, from the project folder:
+The active app requires `client/.env` with:
 
-```powershell
-Copy-Item .\server\.env.example .\server\.env
-Copy-Item .\client\.env.example .\client\.env
+```env
+VITE_API_URL=https://act-3-5.onrender.com
 ```
 
-Edit `server/.env` and replace the placeholder with your MongoDB Atlas connection string. For a local backend, edit `client/.env` to contain:
+This file is excluded from Git. `client/.env.example` provides the same template. Restart the dev server after changing it. The code adds `/api/products` automatically.
 
-```text
-VITE_API_URL=http://localhost:5000
-```
+## Deploy the frontend on Vercel
 
-Switch to the database app (back up the local version first):
+Import `JmRaine/Act-3-5`, set Root Directory to `client`, Framework Preset to `Vite`, and add the environment variable `VITE_API_URL` with value `https://act-3-5.onrender.com`. Deploy and check that the products remain after refresh. The Vercel website uses the same MongoDB products as localhost.
 
-```powershell
-Copy-Item .\client\src\App.jsx .\client\src\App.local.jsx
-Copy-Item .\client\src\App.database.jsx .\client\src\App.jsx
-npm.cmd run server
-```
+## Sample products and submission
 
-Keep that terminal running. In a second terminal in the project folder:
+Six products with PNG images were added through the Render API. The PNG files in `client/public/product-images/` are also available for manual uploads through Manage. `node scripts/seed-products.mjs` adds missing sample names and skips existing ones; it does not delete products. These sample products are based on the PDF examples; the PDF asks for your own products and descriptions.
 
-```powershell
-npm.cmd start
-```
+For **Activity 1**, Vercel is not required. Submit the cover page with screenshots of the gallery containing your products, Manage while editing a product, and the VS Code sidebar with `components` and `pages` expanded. Local gallery/edit screenshots are saved in `output/screenshots/`. Add/edit/delete, image preview, the 1MB limit, and refresh persistence have been checked in the browser.
 
-You can restore the local app with `Copy-Item .\client\src\App.local.jsx .\client\src\App.jsx`.
+For hosting, submit the GitHub repository, Render showing Live, Thunder Client showing status 201, the live Vercel website with 5+ products, and a photo of the website on your phone. Localhost screenshots alone do not satisfy the hosting requirements.
 
 ## Build
 
@@ -87,4 +80,4 @@ Create a Web Service connected to `JmRaine/Act-3-5` and use:
 
 After deployment, open `/api/products` on your Render URL. An empty database returns `[]`.
 
-The frontend currently uses the local Activity 1 app. To connect it to Render, follow the database-app switch above and set `VITE_API_URL` to your Render URL instead of `http://localhost:5000`.
+The frontend already uses the database app. Set the same `VITE_API_URL` environment variable in Vercel when deploying it.
