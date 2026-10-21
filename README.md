@@ -26,13 +26,14 @@ Use `npm.cmd` in PowerShell to avoid problems with the `npm.ps1` execution polic
 
 - `client/src/App.jsx`: active database-connected app.
 - `client/src/App.local.jsx`: original local app; refresh clears products in this version.
-- `client/public/product-images/`: sample PNG images for upload, plus SVG sources.
+- `client/public/product-images/`: six original AI-generated clay-style product PNGs, each under 1MB.
+- `scripts/products.json`: custom product names, prices, and descriptions.
+- `docs/product-image-provenance.md`: image-generation method and prompts.
 - `client/src/components/`: Navbar, ProductCard, ProductGrid, ImageUpload, ProductForm.
 - `client/src/pages/`: GalleryPage and ManagePage.
 - `client/src/App.database.jsx`: Activity 3 replacement app that connects to the API.
 - `client/src/api.js`: API calls.
 - `server/`: Express API, database connection, model, controller, and routes.
-- `Activity-3-5-codes-and-instructions.md`: all 42 PDF steps, code, rubrics, and submission requirements.
 
 The gallery and footer display Justin Raine Justiza, section INF239.
 
@@ -52,7 +53,7 @@ Import `JmRaine/Act-3-5`, set Root Directory to `client`, Framework Preset to `V
 
 ## Sample products and submission
 
-Six products with PNG images were added through the Render API. The PNG files in `client/public/product-images/` are also available for manual uploads through Manage. `node scripts/seed-products.mjs` adds missing sample names and skips existing ones; it does not delete products. These sample products are based on the PDF examples; the PDF asks for your own products and descriptions.
+Six products with PNG images were added through the Render API. The PNG files in `client/public/product-images/` are also available for manual uploads through Manage. `node scripts/seed-products.mjs` adds missing sample names and skips existing ones; it does not delete products. The current catalog uses different products, original generated artwork, and custom names and descriptions rather than the PDF examples. `node scripts/replace-sample-products.mjs` replaces matching old sample products while preserving other products and saving a local backup.
 
 For **Activity 1**, Vercel is not required. Submit the cover page with screenshots of the gallery containing your products, Manage while editing a product, and the VS Code sidebar with `components` and `pages` expanded. Local gallery/edit screenshots are saved in `output/screenshots/`. Add/edit/delete, image preview, the 1MB limit, and refresh persistence have been checked in the browser.
 

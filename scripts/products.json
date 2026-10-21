@@ -1,0 +1,8 @@
+[
+  { "name": "Moss75 Mechanical Keyboard", "price": 2490, "description": "A compact keyboard with sage and butter-yellow keys for a playful desk setup. Its smaller layout leaves more room for your mouse.", "file": "mechanical-keyboard", "replaces": "Wireless Headphones" },
+  { "name": "Orbit Wireless Controller", "price": 1790, "description": "A lavender game controller with coral buttons and comfortable curved grips. A colorful companion for relaxed gaming sessions.", "file": "game-controller", "replaces": "Canvas Tote Bag" },
+  { "name": "Terra Instant Camera", "price": 3290, "description": "A terracotta instant camera designed for capturing everyday memories. Its simple shape and cream lens give it a warm retro look.", "file": "instant-camera", "replaces": "Ceramic Coffee Mug" },
+  { "name": "Pebble Succulent Planter", "price": 390, "description": "A jade-green succulent in a sculptural peach planter. This small accent brings a fresh touch to a desk or sunny shelf.", "file": "succulent-planter", "replaces": "LED Desk Lamp" },
+  { "name": "Sunday Cruiser Board", "price": 2190, "description": "A compact cruiser skateboard with a maple deck and coral wheels. Made for a cheerful collection of everyday adventure essentials.", "file": "cruiser-skateboard", "replaces": "Laptop Backpack" },
+  { "name": "Drift Everyday Sneakers", "price": 1890, "description": "Cream low-top sneakers with sage panels and soft peach accents. Their rounded shape and gum-colored soles create a relaxed everyday look.", "file": "everyday-sneakers", "replaces": "Smart Watch" }
+]

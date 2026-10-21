@@ -2,20 +2,13 @@ import { readFile } from 'node:fs/promises';
 
 const base = process.env.SEED_API_URL || 'https://act-3-5.onrender.com';
 const endpoint = `${base.replace(/\/$/, '')}/api/products`;
-const products = [
-  ['Wireless Headphones', 1499, 'Bluetooth 5.3 over-ear headphones with 20 hours of battery life and soft ear cushions.', 'wireless-headphones'],
-  ['Canvas Tote Bag', 350, 'Eco-friendly cotton tote bag with an inside pocket. Strong, washable, and good for school.', 'canvas-tote-bag'],
-  ['Ceramic Coffee Mug', 220, '350ml ceramic mug that keeps your coffee warm. Microwave and dishwasher safe.', 'ceramic-coffee-mug'],
-  ['LED Desk Lamp', 899, 'Adjustable LED lamp with 3 brightness levels and a built-in USB charging port.', 'led-desk-lamp'],
-  ['Laptop Backpack', 1250, 'Water-resistant backpack that fits a 15.6-inch laptop, with padded shoulder straps.', 'laptop-backpack'],
-  ['Smart Watch', 2499, 'Fitness watch with step counter, heart rate monitor, and 7-day battery life.', 'smart-watch'],
-];
+const products = JSON.parse(await readFile(new URL('./products.json', import.meta.url), 'utf8'));
 
 const initial = await fetch(endpoint, { signal: AbortSignal.timeout(90000) });
 if (!initial.ok) throw new Error(`Could not load products: ${initial.status}`);
 const existing = await initial.json();
 
-for (const [name, price, description, file] of products) {
+for (const { name, price, description, file } of products) {
   if (existing.some((p) => p.name === name)) {
     console.log(`Already exists: ${name}`);
     continue;
