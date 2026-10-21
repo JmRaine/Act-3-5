@@ -34,7 +34,7 @@ Use `npm.cmd` in PowerShell to avoid problems with the `npm.ps1` execution polic
 - `server/`: Express API, database connection, model, controller, and routes.
 - `Activity-3-5-codes-and-instructions.md`: all 42 PDF steps, code, rubrics, and submission requirements.
 
-The name is Juan Dela Cruz, matching the PDF example. The PDF supplies no section, so `[Section]` remains a footer placeholder.
+The gallery and footer display Justin Raine Justiza, section INF239.
 
 ## Frontend environment
 

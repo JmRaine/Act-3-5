@@ -71,7 +71,7 @@ function App() {
       )}
 
       <footer className="py-10 text-center text-sm text-slate-400">
-        Made by Juan Dela Cruz · [Section]
+        Made by Justin Raine Justiza · INF239
       </footer>
     </div>
   );
